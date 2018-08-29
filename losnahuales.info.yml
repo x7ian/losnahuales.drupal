@@ -1,0 +1,5 @@
+name: LosNahuales
+type: module
+description: Maya Calendar calculator and assets
+core: 8.x
+package: LosNahuales

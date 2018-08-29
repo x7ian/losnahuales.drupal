@@ -1,0 +1,189 @@
+
+<div class="panel">
+  <div class="panel-heading"><h4 class="result-title">
+    <i class="fa fa-bullseye" aria-hidden="true"></i>
+    {{ fecha }} </h4>
+  </div>
+
+  <div class="panel-body row">
+
+      <div class="estela-maya col-xs-3">
+
+        <div class="tabbable-panel">
+        	<div class="tabbable-line">
+        		<ul class="nav nav-tabs ">
+        			<li class="active">
+        				<a @click="completa = false" href="#fecha_simple" data-toggle="tab">
+        				Estela Simple </a>
+        			</li>
+        			<li>
+        				<a @click="completa = true" href="#estela" data-toggle="tab">
+        				Completa </a>
+        			</li>
+        		</ul>
+        		<div class="tab-content">
+        		</div>
+        	</div>
+        </div>
+        <div class='estela' v-bind:class="{ estela_completa: completa }">
+            <transition name="bounce">
+              <div class="introductorio" v-if="completa"> {{ intro }} </div>
+            </transition>
+            <transition name="bounce">
+              <div class="par baktun" v-if="completa" transition="bounce"> {{ baktun }} </div>
+            </transition>
+            <transition name="bounce">
+              <div class="par katun" v-if="completa" transition="bounce"> {{ katun }} </div>
+            </transition>
+            <transition name="bounce">
+              <div class="par tun" v-if="completa" transition="bounce"> {{ tun }} </div>
+            </transition>
+            <transition name="bounce">
+              <div class="par uinal" v-if="completa" transition="bounce"> {{ uinal }} </div>
+            </transition>
+            <transition name="bounce">
+              <div class="par kin" v-if="completa" transition="bounce"> {{ kin }} </div>
+            </transition>
+            <div class="par cholqij"> {{ cholqij }} </div>
+            <div class="par haab"> {{ haab }} </div>
+            <transition name="bounce">
+              <div class="par g" v-if="completa" transition="bounce"> {{ senor_de_la_noche }} </div>
+            </transition>
+        </div>
+      </div>
+
+      <div class='day-contents col-xs-9'>
+
+        <ul class="nav nav-tabs">
+          {% if article_id == 0 %}
+            <li class="active"><a data-toggle="tab" href="#date-info">Detalles de la Fecha</a></li>
+          {% else %}
+            <li class=""><a data-toggle="tab" href="#date-info">Detalles de la Fecha</a></li>
+          {% endif %}
+          {% if article_id != 0 %}
+            <li class="active"><a data-toggle="tab" href="#today">Lectura del d&iacute;a</a></li>
+          {% endif %}
+          <li><a data-toggle="tab" href="#chumilal-wuj">Nahual en el Libro del destino</a></li>
+        </ul>
+
+        <div class="tab-content">
+          {% if article_id == 0 %}
+          <div id="date-info" class="tab-pane slide in active">
+          {% else %}
+          <div id="date-info" class="tab-pane slide in">
+          {% endif %}
+            <div class="fecha-info">
+                <div class="">
+                  {{ fecha_completa }}
+                  {{ desglose_tiempo }}
+                </div>
+                <div class="" v-if="completa" transition="bounce"> {{ fase_lunar }} </div>
+            </div>
+          </div>
+          {% if article_id != 0 %}
+            <div id="today" class="tab-pane slide in active">
+              {{ article_render }}
+            </div>
+          {% endif %}
+          <div id="chumilal-wuj" class="tab-pane slide in">
+            <h3>Chumilal Wuj</h3>
+            <div class="chumilal_wuj_info" />
+              <p>* Fuente de la informaci&oacute;n:
+              <a target="_blank"
+                href="https://books.google.com.gt/books?id=bUKamyk51UUC&printsec=frontcover&hl=es&source=gbs_ge_summary_r&cad=0#v=onepage&q&f=false">
+              Ch'umilal Wuj (El Libro del Destino)</a> de Carlos Barrios</p>
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="" href="#significados">Significados del día </a>
+                    </h4>
+                  </div>
+                  <div id="significados" class="_panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="cholqij_no row">
+                            <div class="col-md-12">
+                            <h4>{{ cholqij_no_name }} - Número {{ cholqij_no_title }} {{ cholqij_no_img_normal }}</h4>
+                            </div>
+                          </div>
+                          <div class="nahual row">
+                            <div class="col-md-12 ">
+                              <h4>{{nombre_nahual}}</h4>
+                            </div>
+                            <div class="col-md-12">
+                              {{ nahual_img }}
+                              {{ nahual_descripcion_corta }}
+                            </div>
+                            <div class="col-md-12">
+                              {{ nahual_atributos }}
+                              {{ nahual_resumen }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="" href="#persona">
+                      Persona {{nombre_nahual}}</a>
+                    </h4>
+                  </div>
+                  <div id="persona" class="_panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          {{ nahual_persona }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="" href="#massobre">
+                      Más sobre {{nombre_nahual}}</a>
+                    </h4>
+                  </div>
+                  <div id="massobre" class="_panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          {{ nahual_img_second }}
+                          {{ nahual_body }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="" href="#cruzmaya">
+                      Cruz Maya de {{nombre_nahual}}</a>
+                    </h4>
+                  </div>
+                  <div id="cruzmaya" class="_panel-collapse collapse">
+                    <div class="panel-body row">
+                      <div class="col-sm-12">
+                        {{ nahual_cruz_img }}
+                        {{ nahual_cruz_description }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

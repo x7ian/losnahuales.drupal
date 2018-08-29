@@ -1,0 +1,215 @@
+@import '../../../../themes/nahuales/less/nahuales.less';
+
+/* always present */
+.expand-transition {
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+/* .expand-enter defines the starting state for entering */
+/* .expand-leave defines the ending state for leaving */
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+/* bounce effect */
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+.bounce-transition {
+  display: inline-block; /* otherwise scale animation won't work */
+}
+.bounce-enter {
+  animation: bounce-in .5s;
+}
+.bounce-leave {
+  animation: bounce-out .5s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.result-title {
+  padding: 0;
+  margin: 0;
+}
+.cholqij-hoy {
+  img {
+    height: 25px;
+    float: left;
+  }
+}
+.estela-maya {
+  height: 650px;
+  .nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+  	background-color: #eeeeee;
+  	border-radius: 10px 10px 0 0;
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  	background-color: #3c1362;
+  	color: #fff;
+  	border-radius: 10px 10px 0 0;
+  }
+  .nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+    background-color: #ddd;
+  }
+}
+@media @mobile {
+  .estela-maya {
+    padding: 0;
+  }
+}
+.estela {
+	border: 1px solid #3c1362;
+  margin-top: 15px;
+	padding: 15px 7px 5px 4px;
+	float: left;
+	border-radius: 20px 20px;
+	width: 100%;
+	/*border: 1px solid @morado;*/
+	.glifo-introductorio {
+		width: 80%;
+		margin-left: 10%;
+	}
+	.dato-calendario {
+		float: left;
+		width: 50%;
+	  .img-container {
+	  	float: left;
+	  }
+	  .img-container.number {
+			padding: 0;
+			margin: 0;
+			width: 34%;
+			margin-top: 10px;
+	  }
+		.img-container.glifo {
+	    padding: 0;
+			margin: 0;
+			width: 66%;
+	  }
+	  .data-title {
+	  	width: 100%;
+	  	float:left;
+	  	text-align: center;
+		}
+  }
+	.dato-calendario.g .img-container {
+		margin-left: 25%;
+	}
+}
+@media @mobile {
+  .estela {
+    margin-left: 3%;
+    width: 97%;
+
+
+  }
+}
+
+.estela_completa {
+  border-radius: 50px 50px 0 0;
+}
+.direccion-icon img {
+	width: 30px;
+}
+.mensaje-direccion {
+	font-size: 12px;
+}
+.estela-info {
+	.cholqij-hoy {
+		img {
+			float:left;
+			height: 40px;
+		}
+		.data-title {
+			display: none;
+		}
+	}
+	.fecha-info {
+		margin-bottom: 25px;
+		span {
+			color: #6400fc;
+			font-size: 16px;
+		}
+	}
+	.cholqij_no {
+		img {
+			width: 70px;
+			float: left;
+			padding: 0 10px;
+		}
+	}
+	.img-container.glifos img {
+		float:left;
+		padding: 7px 15px;
+	}
+	.img-container.glifos.cruz img {
+		float:right;
+	}
+	.results-tabs {
+		border-top: 1px solid #ccc;
+		ul li a {
+			background-color: #eee;
+		}
+		ul li a.active {
+			background-color: #ddd;
+		}
+	}
+}
+.day-contents {
+  border-left: 1px solid #999;
+}
+/* todays interpretation */
+#today {
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.9;
+  .dato-calendario {
+    img {
+      height: 30px;
+      float: left;
+    }
+  }
+  h3 {
+    margin: 15px auto;
+  }
+  .article-image {
+    width: 100%;
+    img {
+      margin: 15px auto;
+      width: 85%;
+    }
+  }
+  .field--name-field-images img {
+    margin: 0 auto 15px;
+  }
+  .field--name-field-fb-comments {
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+}

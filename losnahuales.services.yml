@@ -1,0 +1,5 @@
+services:
+  losnahuales.convertidorFechas:
+    class: Drupal\losnahuales\Service\ConvertidorFechas
+    arguments: []
+

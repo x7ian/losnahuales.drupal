@@ -1,0 +1,25 @@
+vue:
+  remote: https://unpkg.com/
+  license:
+    name: MIT
+    gpl-compatible: false
+  js:
+    https://unpkg.com/vue: { type: external }
+vuetify:
+  remote: https://github.com/vuetifyjs/vuetify
+  license:
+    name: MIT
+    gpl-compatible: false
+  css:
+    component:
+      https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css: { type: external }
+  js:
+    https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js: { type: external }
+estela:
+  version: 1.x
+  css:
+    component:
+      css/estela.css: {}
+      css/calculador-form.css: {}
+  js:
+    js/estela.js: {}

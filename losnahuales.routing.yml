@@ -1,0 +1,83 @@
+
+losnahuales.losnahuales_calcular_default:
+  path: '/calcular'
+  defaults:
+    _controller: '\Drupal\losnahuales\Controller\PageCalculador::pageCalcular'
+    _title: 'Mayan dates calculator'
+  requirements:
+    _permission: 'access content'
+
+losnahuales.losnahuales_calcular_fecha:
+  path: '/calcular/{yyyy}/{mm}/{dd}/{sistema}'
+  defaults:
+    _controller: '\Drupal\losnahuales\Controller\PageCalculador::pageCalcular'
+    _title: 'Mayan dates calculator'
+    sistema: 1
+    dd: 0
+    mm: 0
+    yyyy: 0
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      yyyy:
+        type: String
+      mm:
+        type: String
+      dd:
+        type: String
+      sistema:
+        type: String
+
+losnahuales.calendario_haab:
+  path: '/calendario/haab/{yyyy}/{sistema}/{comienzo}'
+  defaults:
+    _controller: '\Drupal\losnahuales\Controller\PageCalendarios::calendarioHaab'
+    _title: "Calendario haab"
+    yyyy: 0
+    sistema: 0
+    comienzo: 0
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      yyyy:
+        type: String
+      sistema:
+        type: String
+      comienzo:
+        type: String
+
+losnahuales.chumilal_wuh:
+  path: '/chumilal-wuh/{nahual}'
+  defaults:
+    _controller: '\Drupal\losnahuales\Controller\PageChumilal::show'
+    _title: "Descripcion de Nahual en el Chumilal Wuh"
+    nahual: ''
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      nahual:
+        type: String
+
+losnahuales.cargadores:
+  path: '/cargadores'
+  defaults:
+    _controller: '\Drupal\losnahuales\Controller\PageCargadores::listadoCargadores'
+    _title: "Listado de cargadores"
+    sistema: 0
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      sistema:
+        type: String
+
+losnahuales.calculador_form:
+  path: '/calculador'
+  defaults:
+    _form:  '\Drupal\losnahuales\Form\CalculadorForm'
+    _title: 'Calculador de fechas mayas'
+  requirements:
+    _permission: 'access content'

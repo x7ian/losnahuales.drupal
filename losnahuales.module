@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Contains losnahuales.module
+ */
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Entity;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\Url;
+use Drupal\losnahuales\Service\CustomUtils;
+use Drupal\losnahuales\Service\CustomMetatags;
+use Drupal\losnahuales\Service\ConvertidorFechas;
+use Drupal\losnahuales\Gadget\CalendarioHaab;
+use Drupal\losnahuales\Gadget\ResultadoCalculo;
+use Drupal\losnahuales\Gadget\TablaDeCargadores;
+
+/**
+ * Implements hook_help().
+ */
+function losnahuales_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the calculador module.
+    case 'help.page.losnahuales':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Calculador de fechas mayas, a partir de fechas gregorianas') . '</p>';
+      return $output;
+    default:
+  }
+}
+
+/**
+ * Theme hook
+ */
+function losnahuales_theme($existing, $type, $theme, $path) {
+  return [
+    'calculador' =>[
+      'variables' => [
+        'fecha' => NULL,
+        'sistema' => NULL,
+        'set_metatags' => false,
+      ],
+      'template' => 'calculador',
+      
+    ],
+    'listado_cargadores' =>[
+      'variables' => [
+        'sistema' => NULL,
+        'tabla_cargadores' => NULL,
+      ],
+      'template' => 'cargadores'
+    ],
+    'calendario_haab' =>[
+      'variables' => [
+        'anno' => NULL,
+        'sistema' => NULL,
+        'comienzo' => NULL,
+        'set_metatags' => false,
+      ],
+      'template' => 'calendario-haab'
+    ],
+  ];
+}
+
+/**
+ * Implements template_preprocess_calculador().
+ */
+function template_preprocess_calculador(&$variables) {
+  $result = new ResultadoCalculo();
+  $result->dataBuild($variables);
+};
+
+/**
+ * Implements template_preprocess_calendario_haab().
+ */
+function template_preprocess_calendario_haab(&$variables) {
+  $result = new CalendarioHaab();
+  $result->dataBuild($variables);
+
+
+
+  /*
+  $variables['sistema'] = $sistema;
+  $variables['year'] = $anno;
+  $variables['tabla_calendario'] = $tabla;*/
+}
+
+function template_preprocess_listado_cargadores(&$variables) {
+  $sistema = $variables['sistema'];
+  $tabla = new TablaDeCargadores($sistema);
+  $tabla_cargadores = $tabla->build();
+  $variables['tabla_cargadores'] = $tabla_cargadores;
+}
